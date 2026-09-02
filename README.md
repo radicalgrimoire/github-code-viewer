@@ -39,7 +39,7 @@ The script loads the corresponding `raw.githubusercontent.com` URL and creates a
 
 ## Markdown and Growi
 
-When your Markdown renderer strips custom HTML elements, use a code fence instead. The library replaces this block with a code viewer.
+When your Markdown renderer strips custom HTML elements, use a code fence instead. The library replaces a code block containing `repo`, `commit`, and `path` with a code viewer; the fence language is optional.
 
 ````md
 ```github-code-viewer

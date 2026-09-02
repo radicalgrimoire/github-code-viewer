@@ -48,6 +48,12 @@ function createCodeViewFromMarkdown(code) {
   return view;
 }
 
+function isCodeViewConfiguration(code) {
+  return /(^|\n)repo:\s*\S+/.test(code.textContent)
+    && /(^|\n)commit:\s*\S+/.test(code.textContent)
+    && /(^|\n)path:\s*\S+/.test(code.textContent);
+}
+
 function createCodeViewShell(view) {
   const sourceUrl = view.dataset.sourceUrl || githubUrl(view, "raw");
   const blobUrl = view.dataset.blobUrl || githubUrl(view, "github");
@@ -129,7 +135,9 @@ async function loadCodeView(view) {
 }
 
 function initializeCodeViews() {
-  document.querySelectorAll("pre > code.language-github-code-viewer").forEach(createCodeViewFromMarkdown);
+  document.querySelectorAll("pre > code").forEach((code) => {
+    if (isCodeViewConfiguration(code)) createCodeViewFromMarkdown(code);
+  });
   document.querySelectorAll(".github-code-view").forEach(loadCodeView);
 }
 
