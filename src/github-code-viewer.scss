@@ -1,0 +1,64 @@
+.github-code-view {
+  background: #333;
+  border: 1px solid #777;
+  border-radius: 2px;
+  color: #f8f8f2;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 1em;
+  margin: 1.5em 0;
+  overflow-x: auto;
+}
+
+.github-code-view-header {
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #777;
+  padding: 0.65em 1em;
+}
+
+.github-code-view-header a {
+  color: inherit;
+}
+
+.github-code-view-content {
+  background: transparent;
+  border-radius: 0;
+  font-size: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: 0.6em 0;
+}
+
+.github-code-view-line {
+  display: grid;
+  grid-template-columns: max-content minmax(max-content, 1fr);
+  min-height: 1.5em;
+}
+
+.github-code-view-line.is-highlighted {
+  background: rgba(102, 217, 239, 0.24);
+}
+
+.github-code-view-line-number {
+  color: #a29f90;
+  padding: 0 1em;
+  text-align: right;
+  user-select: none;
+}
+
+.github-code-view-line-number:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+}
+
+.github-code-view-line-content {
+  min-width: max-content;
+  padding-right: 1em;
+  white-space: pre;
+}
+
+.github-code-view[data-wrap="true"] .github-code-view-line-content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
