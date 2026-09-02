@@ -7,9 +7,9 @@ Render a public GitHub file at a fixed commit with GitHub-style line numbers, pe
 Copy both files from `src/` into your project:
 
 - `github-code-viewer.js`
-- `github-code-viewer.scss`
+- `github-code-viewer.css`
 
-The stylesheet uses plain CSS syntax, so it can be renamed to `.css`. Load the stylesheet in the page `<head>` and the script after the code-view elements.
+Load the stylesheet in the page `<head>` and the script after the code-view elements.
 
 ```html
 <link rel="stylesheet" href="/assets/github-code-viewer.css">

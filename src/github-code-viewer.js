@@ -57,6 +57,9 @@ function createCodeViewShell(view) {
 }
 
 async function loadCodeView(view) {
+  if (view.dataset.githubCodeViewerLoaded === "true") return;
+  view.dataset.githubCodeViewerLoaded = "true";
+
   try {
     const { content, sourceUrl } = createCodeViewShell(view);
     const startLine = Math.max(1, Number(view.dataset.startLine || 1));
@@ -107,5 +110,10 @@ async function loadCodeView(view) {
   }
 }
 
-document.querySelectorAll(".github-code-view").forEach(loadCodeView);
+function initializeCodeViews() {
+  document.querySelectorAll(".github-code-view").forEach(loadCodeView);
+}
+
+initializeCodeViews();
+new MutationObserver(initializeCodeViews).observe(document.body, { childList: true, subtree: true });
 window.addEventListener("hashchange", updateHighlightedLines);

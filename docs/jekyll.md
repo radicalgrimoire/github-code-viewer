@@ -1,6 +1,6 @@
 # Jekyll Setup
 
-Copy the files from `src/` into your Jekyll site, compile `github-code-viewer.scss` as CSS, then load the CSS and JavaScript in your default layout.
+Copy the files from `src/` into your Jekyll site, then load the CSS and JavaScript in your default layout.
 
 ```liquid
 <link rel="stylesheet" href="{{ "/assets/github-code-viewer.css" | relative_url }}">
