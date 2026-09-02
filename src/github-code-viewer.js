@@ -30,6 +30,24 @@ function githubUrl(view, host) {
     : `https://github.com/${repo}/blob/${commit}/${path}`;
 }
 
+function createCodeViewFromMarkdown(code) {
+  const view = document.createElement("section");
+  const config = {};
+
+  code.textContent.split("\n").forEach((line) => {
+    const match = /^([a-z-]+):\s*(.+)$/.exec(line.trim());
+    if (match) config[match[1]] = match[2];
+  });
+
+  view.className = "github-code-view";
+  view.id = config.id || `github-code-view-${document.querySelectorAll(".github-code-view").length + 1}`;
+  Object.entries(config).forEach(([key, value]) => {
+    view.dataset[key.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())] = value;
+  });
+  code.parentElement.replaceWith(view);
+  return view;
+}
+
 function createCodeViewShell(view) {
   const sourceUrl = view.dataset.sourceUrl || githubUrl(view, "raw");
   const blobUrl = view.dataset.blobUrl || githubUrl(view, "github");
@@ -111,6 +129,7 @@ async function loadCodeView(view) {
 }
 
 function initializeCodeViews() {
+  document.querySelectorAll("pre > code.language-github-code-viewer").forEach(createCodeViewFromMarkdown);
   document.querySelectorAll(".github-code-view").forEach(loadCodeView);
 }
 

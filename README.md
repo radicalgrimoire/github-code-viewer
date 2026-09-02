@@ -37,6 +37,24 @@ The script loads the corresponding `raw.githubusercontent.com` URL and creates a
 
 `data-start-line` defaults to `1`; omit `data-end-line` to show the full file. Set `data-wrap="true"` to wrap long lines. Omit it, or use `false`, to scroll horizontally.
 
+## Markdown and Growi
+
+When your Markdown renderer strips custom HTML elements, use a code fence instead. The library replaces this block with a code viewer.
+
+````md
+```github-code-viewer
+id: source-example
+repo: owner/repository
+commit: 0123456789abcdef0123456789abcdef01234567
+path: src/example.js
+start-line: 1
+end-line: 80
+wrap: true
+```
+````
+
+The supported keys are `id`, `repo`, `commit`, `path`, `start-line`, `end-line`, `wrap`, `label`, `source-url`, and `blob-url`.
+
 ## Line Links
 
 Click a line number to create a hash such as `#source-example-L23`. Shift-click a second line number to create and highlight a range such as `#source-example-L23-L29`.
@@ -56,10 +74,6 @@ For a public text URL outside GitHub, use `data-source-url`. Optionally use `dat
 ```
 
 The remote server must allow browser requests through CORS. GitHub raw URLs for public repositories do so.
-
-## Growi
-
-Load the CSS and JavaScript through Growi's Custom CSS and Custom Script settings. Then put the Usage HTML in a custom HTML block. Your Growi Content Security Policy must allow the script host and `raw.githubusercontent.com`.
 
 ## Notes
 
